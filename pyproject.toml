@@ -7,7 +7,9 @@ authors = [
     { name = "Gregory Kavalerov", email = "gregory.kavalerov@ah.nl" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pandas>=3.1.1",
+]
 
 [project.scripts]
 animal-shelter = "animal_shelter:main"

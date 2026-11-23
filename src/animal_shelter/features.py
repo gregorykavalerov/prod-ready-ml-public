@@ -97,12 +97,11 @@ def _get_neutered(sex_upon_outcome):
         DataFrame containing the animal data with the 'neutered' column added.
     """
 
-    sexUponOutcome = sex_upon_outcome
-    neutered = sexUponOutcome.str.lower()
-    neutered.loc[neutered.str.contains("neutered")] = "fixed"
-    neutered.loc[neutered.str.contains("spayed")] = "fixed"
+    neutered = sex_upon_outcome
+    neutered.loc[neutered.str.contains("Neutered")] = "fixed"
+    neutered.loc[neutered.str.contains("Spayed")] = "fixed"
 
-    neutered.loc[neutered.str.contains("intact")] = "intact"
+    neutered.loc[neutered.str.contains("Intact")] = "intact"
     neutered.loc[~neutered.isin(["fixed", "intact"])] = "unknown"
 
     return neutered
