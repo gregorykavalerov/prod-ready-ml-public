@@ -1,9 +1,13 @@
 import pandas as pd
+import pytest
 from pandas.testing import assert_series_equal
 
 from animal_shelter import features
 
-# TODO: add assertion tests
+
+@pytest.fixture(scope="function")
+def list_of_sex():
+    return ["Spayed Female", "Neutered Male", "Intact Female"]
 
 
 def test_check_has_name():
@@ -13,17 +17,17 @@ def test_check_has_name():
     assert_series_equal(result, expected)
 
 
-def test_get_sex():
-    s = pd.Series(["Female", "Male", "unknown"])
+def test_get_sex(list_of_sex):
+    s = pd.Series(list_of_sex)
     result = features._get_sex(s)
-    expected = pd.Series(["female", "male", "unknown"])
+    expected = pd.Series(["female", "male", "female"])
     assert_series_equal(result, expected)
 
 
-def test_get_neutered():
-    s = pd.Series(["Spayed", "Neutered", "unknown"])
+def test_get_neutered(list_of_sex):
+    s = pd.Series(list_of_sex)
     result = features._get_neutered(s)
-    expected = pd.Series(["fixed", "fixed", "unknown"])
+    expected = pd.Series(["fixed", "fixed", "intact"])
     assert_series_equal(result, expected)
 
 
