@@ -3,7 +3,11 @@ import re
 
 import pandas as pd
 
+from animal_shelter import setup_logger
+
 logger = logging.getLogger("animal_shelter")
+
+setup_logger()
 
 
 def load_data(path):

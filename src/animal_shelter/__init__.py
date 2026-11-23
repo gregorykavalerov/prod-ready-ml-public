@@ -25,10 +25,6 @@ def setup_logger(*, level: int = logging.INFO) -> None:
     logger.addHandler(stream_handler)
 
 
-# Initialize logger when module is imported (default to INFO level)
-setup_logger(level=logging.INFO)
-
-
 def set_log_level(level: int | str) -> None:
     logger = logging.getLogger("animal_shelter")
     logger.setLevel(level)
