@@ -8,7 +8,13 @@ authors = [
 ]
 requires-python = ">=3.12"
 dependencies = [
-    "pandas>=3.1.1",
+    "pandas>=2.3.3",
+    "fastapi>=0.115.0",
+    "uvicorn>=0.34.0",
+    "scikit-learn>=1.8.0",
+    "pydantic>=2.10.0",
+    "prometheus-client>=0.21.0",
+    "cli",
 ]
 
 [project.scripts]
@@ -20,10 +26,21 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "httpx2>=2.16.2",
     "jupyter>=1.1.1",
     "mypy>=2.4.1",
     "pandas-stubs>=3.1.0.261029",
     "pre-commit>=4.7.0",
     "pytest>=9.2.0",
     "ruff>=0.17.6",
+]
+
+[tool.uv.sources]
+cli = { workspace = true }
+
+[tool.uv.workspace]
+members = [
+    "notebooks/cli/cli",
+    "cli",
+    "packages/cli",
 ]
